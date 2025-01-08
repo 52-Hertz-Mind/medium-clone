@@ -1,10 +1,10 @@
 "use client";
-import { Search } from "lucide-react";
+import { Bell, PenSquare, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 function Header({ font }: { font: string }) {
   return (
-    <div className="px-5 py-2 border-b border-gray-100">
+    <div className="flex justify-between px-5 py-2 border-b border-gray-100">
       <div className="flex gap-5">
         <button className={`text-3xl ${font}`}>Medium</button>
         <div className="relative w-56 max-w-sm group">
@@ -15,6 +15,15 @@ function Header({ font }: { font: string }) {
             className="pl-9 bg-muted/50 rounded-3xl border-none focus:ring-0 focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0 placeholder-muted-foreground/90"
           />
         </div>
+      </div>
+      <div className="flex gap-5 items-center">
+        <button className="inline-flex items-center gap-2 px-2 py-[6px] text-[14px] text-neutral-500 hover:text-neutral-800 bg-white rounded-full transition-colors duration-200">
+          <PenSquare className="h-[20px] w-[20px]" strokeWidth={1.5} />
+          <span>Write</span>
+        </button>
+        <button className="text-gray-500 hover:text-gray-800">
+          <Bell strokeWidth={1} />
+        </button>
       </div>
     </div>
   );
