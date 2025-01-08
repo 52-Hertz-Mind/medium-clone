@@ -1,27 +1,20 @@
 "use client";
-import { Input } from "@mui/base";
-import { CiSearch } from "react-icons/ci";
-import { InputAdornment } from "@mui/material";
+import { Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
 
 function Header({ font }: { font: string }) {
   return (
-    <div className={`${font} px-5 py-2`}>
-      <div>
-        <button className="text-2xl">Medium</button>
-        <Input
-          slotProps={{
-            input: {
-              className:
-                "w-80 text-sm font-sans font-normal leading-5 px-3 py-2 rounded-lg shadow-md shadow-slate-100 dark:shadow-slate-900 focus:shadow-outline-purple dark:focus:shadow-outline-purple focus:shadow-lg border border-solid border-slate-300 hover:border-purple-500 dark:hover:border-purple-500 focus:border-purple-500 dark:focus:border-purple-500 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-300 focus-visible:outline-0",
-            },
-          }}
-          placeholder="Search"
-          startAdornment={
-            <InputAdornment position="start">
-              <CiSearch />
-            </InputAdornment>
-          }
-        />
+    <div className="px-5 py-2 border-b border-gray-100">
+      <div className="flex gap-5">
+        <button className={`text-3xl ${font}`}>Medium</button>
+        <div className="relative w-56 max-w-sm group">
+          <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground transition-colors group-hover:text-foreground group-focus-within:text-foreground" />
+          <Input
+            type="search"
+            placeholder="Search"
+            className="pl-9 bg-muted/50 rounded-3xl border-none focus:ring-0 focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0 placeholder-muted-foreground/90"
+          />
+        </div>
       </div>
     </div>
   );
