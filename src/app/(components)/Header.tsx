@@ -1,6 +1,7 @@
 "use client";
 import { Bell, PenSquare, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import ProfileButton from "@/app/(components)/ProfileMenu";
 
 function Header({ font }: { font: string }) {
   return (
@@ -24,6 +25,7 @@ function Header({ font }: { font: string }) {
         <button className="text-gray-500 hover:text-gray-800">
           <Bell strokeWidth={1} />
         </button>
+        <ProfileButton />
       </div>
     </div>
   );
