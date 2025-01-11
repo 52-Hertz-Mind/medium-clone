@@ -11,6 +11,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { Button } from "@/components/ui/button";
+import Tooltip from "@/app/(components)/Tooltip";
 export interface BlogCardDataModel {
   userName: string;
   userImageUrl: string;
@@ -76,12 +77,13 @@ function BlogCard({ data }: BlogCardProps) {
               <Hand className="size-4 text-black" strokeWidth={1} />
               <span className="text-sm font-semibold text-gray-500">
                 {data.clapsCount}
+                <Tooltip data={(data.clapsCount, data.userName)} />
               </span>
             </div>
             <div className="flex gap-1 items-center">
               <MessageCircle className="size-4 text-black" strokeWidth={1} />
               <span className="text-sm font-semibold text-gray-500">
-                {data.clapsCount}
+                {data.commentsCount}
               </span>
             </div>
             {/*end of blog stats*/}
