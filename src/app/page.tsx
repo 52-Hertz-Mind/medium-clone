@@ -3,7 +3,7 @@ import BlogCard, { BlogCardDataModel } from "@/app/(components)/BlogCard";
 
 export default function Home() {
   const data: BlogCardDataModel = {
-    userName: "mamad",
+    userName: "Mohammad Aghaei",
     userImageUrl: "/profilepic.jpg",
     blogTitle: "How I Tricked My Brain to Be Addicted to Coding",
     blogDescription:

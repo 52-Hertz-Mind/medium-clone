@@ -5,7 +5,7 @@ import ProfileButton from "@/app/(components)/ProfileMenu";
 
 function Header({ font }: { font: string }) {
   return (
-    <div className="flex justify-between px-5 py-2 border-b border-gray-100">
+    <header className="flex justify-between px-5 py-2 border-b border-gray-100">
       <div className="flex gap-5">
         <button className={`text-3xl ${font}`}>Medium</button>
         <div className="relative w-56 max-w-sm group">
@@ -27,7 +27,7 @@ function Header({ font }: { font: string }) {
         </button>
         <ProfileButton />
       </div>
-    </div>
+    </header>
   );
 }
 

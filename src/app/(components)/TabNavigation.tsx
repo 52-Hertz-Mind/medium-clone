@@ -29,7 +29,7 @@ function TabNavigation({ linkNames, isPlusNeeded }: TabNavigationProps) {
   }
 
   return (
-    <div className="flex border-b border-gray-100 justify-start w-1/2 mx-10">
+    <div className="flex border-b border-gray-100 justify-start w-11/12 mx-10">
       {isPlusNeeded ? (
         <Plus
           className=" mr-5 text-gray-500 rounded-full hover:bg-gray-100 cursor-pointer"
