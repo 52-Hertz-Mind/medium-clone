@@ -1,26 +1,29 @@
 interface TooltipDataModel {
-  amount: number;
-  dataName: string;
+  amount?: number;
+  dataName?: string;
+  isToolTipActive: boolean;
 }
 
-interface TooltipData {
-  data: TooltipDataModel;
-}
-
-function Tooltip({ data }: { data: TooltipData }) {
-  // Tooltip component
-  function calculateTooltipPosition() {
-    // Calculate the position of the tooltip
-    return {
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-    };
-  }
+function Tooltip({ amount, dataName, isToolTipActive }: TooltipDataModel) {
+  if (!isToolTipActive) return null;
   return (
-    <div className="flex gap-1 w-16 h-10">
-      <span>{data.amount}</span>
-      <span>{data.dataName}</span>
+    <div
+      className="absolute bottom-[100%] left-1/2 -translate-x-1/2 mb-2 py-1 px-2
+    flex items-center justify-center w-max h-8 bg-neutral-900 rounded-[4px]
+     text-white text-xs font-medium whitespace-nowrap"
+    >
+      {amount ? (
+        <>
+          <span>{amount}</span>
+          {dataName && <span className="ml-0.5">{dataName}</span>}
+        </>
+      ) : (
+        dataName
+      )}
+      <div
+        className="absolute left-1/2 transform -translate-x-1/2 -bottom-1 w-2 h-2
+       bg-neutral-900 rotate-45"
+      ></div>
     </div>
   );
 }

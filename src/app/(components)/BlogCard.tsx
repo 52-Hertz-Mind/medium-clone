@@ -1,3 +1,4 @@
+"use client";
 import {
   CircleMinus,
   Bookmark,
@@ -12,6 +13,8 @@ import {
 } from "@/components/ui/hover-card";
 import { Button } from "@/components/ui/button";
 import Tooltip from "@/app/(components)/Tooltip";
+import { useState } from "react";
+import { Timeout } from "@mui/utils/useTimeout";
 export interface BlogCardDataModel {
   userName: string;
   userImageUrl: string;
@@ -28,8 +31,50 @@ interface BlogCardProps {
 }
 
 function BlogCard({ data }: BlogCardProps) {
+  //region states
+
+  const [isClapsToolTipActive, setisClapsToolTipActive] = useState(false);
+  const [isResponsesToolTipActive, setisResponsesToolTipActive] =
+    useState(false);
+  const [isShowlessToolTipActive, setisShowlessToolTipActive] = useState(false);
+  const [isSaveToolTipActive, setisSaveToolTipActive] = useState(false);
+  const [isMoreToolTipActive, setisMoreToolTipActive] = useState(false);
+  let toolTipActivationTimeout: any;
+  //end region
+
+  //region functions
+  function handleMouseEnter(toolTipName: string) {
+    toolTipActivationTimeout = setTimeout(() => {
+      switch (toolTipName) {
+        case "claps":
+          setisClapsToolTipActive(true);
+          break;
+        case "responses":
+          setisResponsesToolTipActive(true);
+          break;
+        case "showless":
+          setisShowlessToolTipActive(true);
+          break;
+        case "save":
+          setisSaveToolTipActive(true);
+          break;
+        case "more":
+          setisMoreToolTipActive(true);
+          break;
+      }
+    }, 400);
+  }
+  function handleMouseLeave() {
+    clearTimeout(toolTipActivationTimeout);
+    setisClapsToolTipActive(false);
+    setisResponsesToolTipActive(false);
+    setisShowlessToolTipActive(false);
+    setisSaveToolTipActive(false);
+    setisMoreToolTipActive(false);
+  }
+  //end region
   return (
-    <div className="flex gap-8 items-center border-b border-b-gray-100 p-5 mx-10">
+    <div className="flex gap-8 items-center border-b border-b-gray-100 p-5 mx-10 cursor-pointer">
       <div className="flex flex-col gap-3">
         {/*user data*/}
         <div className="flex items-center gap-2 ">
@@ -73,42 +118,83 @@ function BlogCard({ data }: BlogCardProps) {
             <span className="text-xs font-semibold text-gray-500">
               {data.date}
             </span>
-            <div className="flex gap-1 items-center">
+            <div
+              onMouseEnter={() => handleMouseEnter("claps")}
+              onMouseLeave={handleMouseLeave}
+              className="flex gap-1 items-center relative"
+            >
               <Hand className="size-4 text-black" strokeWidth={1} />
               <span className="text-sm font-semibold text-gray-500">
                 {data.clapsCount}
-                <Tooltip data={(data.clapsCount, data.userName)} />
               </span>
+              <Tooltip
+                amount={data.clapsCount}
+                dataName={"claps"}
+                isToolTipActive={isClapsToolTipActive}
+              />
             </div>
-            <div className="flex gap-1 items-center">
+            <div
+              onMouseEnter={() => handleMouseEnter("responses")}
+              onMouseLeave={handleMouseLeave}
+              className="flex gap-1 items-center relative"
+            >
               <MessageCircle className="size-4 text-black" strokeWidth={1} />
               <span className="text-sm font-semibold text-gray-500">
                 {data.commentsCount}
               </span>
+              <Tooltip
+                amount={data.commentsCount}
+                dataName={"responses"}
+                isToolTipActive={isResponsesToolTipActive}
+              />
             </div>
             {/*end of blog stats*/}
           </div>
           {/*buttons*/}
           <div className="flex gap-6 items-center">
-            <button>
+            <button
+              className="relative"
+              onMouseEnter={() => handleMouseEnter("showless")}
+              onMouseLeave={handleMouseLeave}
+            >
               <CircleMinus
                 strokeWidth={1.2}
                 size={22}
                 className="text-gray-500 hover:text-gray-900"
               />
+              <Tooltip
+                dataName={"Show less like this"}
+                isToolTipActive={isShowlessToolTipActive}
+              />
             </button>
-            <button>
+            <button
+              className="relative"
+              onMouseEnter={() => handleMouseEnter("save")}
+              onMouseLeave={handleMouseLeave}
+            >
               <Bookmark
                 strokeWidth={1.2}
                 size={22}
                 className="text-gray-500 hover:text-gray-900"
               />
+              <Tooltip
+                dataName={"Save"}
+                isToolTipActive={isSaveToolTipActive}
+              />
             </button>
-            <button>
+            <button
+              className="relative"
+              onMouseEnter={() => handleMouseEnter("more")}
+              onMouseLeave={handleMouseLeave}
+            >
               <Ellipsis
                 strokeWidth={2.2}
                 size={22}
                 className="text-gray-500 hover:text-gray-900"
+              />
+              <Tooltip
+                dataName={"More"}
+                isToolTipActive={isMoreToolTipActive}
               />
             </button>
           </div>
