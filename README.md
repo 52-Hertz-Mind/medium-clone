@@ -8,7 +8,7 @@ This Medium Clone, built with Next.js, offers dynamic routing, customizable tab 
 - **Next.js**: React framework for server-side rendering and static site generation.  
 - **Tailwind CSS**: Utility-first CSS framework for styling.  
 - **Lucide-React**: Icon library for interactive and customizable icons.
-- **Shadcn**: UI components for some part of the website.
+- **Shadcn**: UI components for some parts of the website.
 
 ---
 
