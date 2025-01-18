@@ -9,11 +9,17 @@ interface TabNavigationProps {
 }
 
 function TabNavigation({ linkNames, isPlusNeeded }: TabNavigationProps) {
+  //region states
+  //end region
+
+  //region hooks
   const router = useRouter();
   const searchParams = useSearchParams();
+  //end region
 
   const activeTab = searchParams.get("topic") || linkNames[0].toLowerCase();
 
+  //region functions
   function handleTabClick(tabName: string) {
     if (tabName.toLowerCase() === "for you") {
       router.push("/"); // Map "For You" to the root route
@@ -27,9 +33,10 @@ function TabNavigation({ linkNames, isPlusNeeded }: TabNavigationProps) {
       router.push(`/?${params.toString()}`);
     }
   }
+  //end region
 
   return (
-    <div className="flex border-b border-gray-100 justify-start w-1/2">
+    <div className="flex border-b border-gray-100 justify-start w-11/12 mx-10">
       {isPlusNeeded ? (
         <Plus
           className=" mr-5 text-gray-500 rounded-full hover:bg-gray-100 cursor-pointer"
