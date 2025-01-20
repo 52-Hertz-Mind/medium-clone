@@ -2,12 +2,15 @@
 import { Bell, PenSquare, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import ProfileButton from "@/app/(components)/ProfileMenu";
+import Link from "next/link";
 
 function Header({ font }: { font: string }) {
   return (
-    <header className="flex justify-between px-5 py-2 border-b border-gray-100">
+    <header className="flex justify-between px-5 py-2 border-b bg-white border-gray-100">
       <div className="flex gap-5">
-        <button className={`text-3xl ${font}`}>Medium</button>
+        <Link href="/" className={`text-3xl text-gray-950 ${font}`}>
+          Medium
+        </Link>
         <div className="relative w-56 max-w-sm group">
           <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground transition-colors group-hover:text-foreground group-focus-within:text-foreground" />
           <Input
