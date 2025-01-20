@@ -1,13 +1,12 @@
 "use client";
 import { Ellipsis } from "lucide-react";
 import TabNavigation from "@/app/(components)/TabNavigation";
-import ReadingList from "@/app/(components)/ReadingListCard";
+
 import Image from "next/image";
 import FooterSidebar from "@/app/(components)/Footer-sidebar";
 import Link from "next/link";
 import SmallDialog from "@/app/(components)/SmallDialog";
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 
 interface ParamsInputView {
   userName: string;
@@ -36,9 +35,6 @@ function Page({ params }: ParamsInputPromise) {
     resolveParams().then();
   }, [params]);
 
-  const urlPath = usePathname();
-  const isAboutPage = urlPath.includes(`/@mohammad/about`);
-
   const userData: UserDataModel = {
     userName: "Mohammad Aghaei",
     followerCount: 20,
@@ -46,7 +42,7 @@ function Page({ params }: ParamsInputPromise) {
     profileImageUrl: "/profilepic.jpg",
   };
   return (
-    <div className="flex px-96 gap-10 h-screen">
+    <div className="flex px-96  gap-10 h-screen">
       {/*content*/}
       <div className="flex flex-col gap-10 w-2/3 border-r pt-12 pr-20 h-screen">
         <div className="flex justify-between">
@@ -65,20 +61,12 @@ function Page({ params }: ParamsInputPromise) {
           </button>
         </div>
         <TabNavigation linkNames={["Home", "About"]} pageLink={userName} />
-        {isAboutPage ? (
-          <div>
-            {/* About Page Content */}
-            <h2 className="text-2xl font-bold">About {userData.userName}</h2>
-            <p>This is the about section for {userData.userName}.</p>
-          </div>
-        ) : (
-          <ReadingList
-            name={userData.userName}
-            storiesCount={2}
-            profileImage={userData.profileImageUrl}
-            thumbnailImage={"/blogImage.png"}
-          />
-        )}
+
+        <div>
+          {/* About Page Content */}
+          <h2 className="text-2xl font-bold">About {userData.userName}</h2>
+          <p>This is the about section for {userData.userName}.</p>
+        </div>
       </div>
       {/*sidebar*/}
       <div className="flex flex-col justify-between pt-12 pb-5">

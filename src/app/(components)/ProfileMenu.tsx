@@ -10,7 +10,7 @@ import {
 import Link from "next/link";
 
 export default function ProfileMenu() {
-  const userName = "@mohammad";
+  const userName = "mohammad";
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -29,7 +29,7 @@ export default function ProfileMenu() {
         <div className="flex flex-col">
           <DropdownMenuItem className="flex gap-3 py-3 cursor-pointer !bg-transparent">
             <User className="stroke-[1px] !w-6 !h-6" />
-            <Link href={`/${userName}`}>Profile</Link>
+            <Link href={`/@${userName}`}>Profile</Link>
           </DropdownMenuItem>
           <DropdownMenuItem className="flex gap-3 py-3 cursor-pointer !bg-transparent">
             <Bookmark className="stroke-[1px] !w-6 !h-6" />
