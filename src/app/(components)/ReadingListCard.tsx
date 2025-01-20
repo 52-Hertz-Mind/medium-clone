@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { MoreHorizontal, Lock } from "lucide-react";
+import SmallDialog from "@/app/(components)/SmallDialog";
+import { useState } from "react";
 
 interface ReadingListCardProps {
   name?: string;
@@ -14,6 +16,8 @@ export default function ReadingListCard({
   profileImage = "/placeholder.svg",
   thumbnailImage = "/placeholder.svg",
 }: ReadingListCardProps) {
+  const [isSmallDialogActive, setIsSmallDialgActive] = useState(false);
+
   return (
     <div className="w-full flex items-center justify-between  bg-neutral-50 rounded cursor-pointer border border-gray-100">
       {/* Left Section */}
@@ -40,9 +44,23 @@ export default function ReadingListCard({
             <span className="text-xs">{storiesCount} stories</span>
             <Lock className="w-3 h-3" />
           </div>
-          <button className="text-neutral-500 hover:text-neutral-900">
+          <button
+            onClick={() => setIsSmallDialgActive((prev) => !prev)}
+            className="text-neutral-500 hover:text-neutral-900"
+          >
             <MoreHorizontal className="w-6 h-6" />
             <span className="sr-only">More options</span>
+            <SmallDialog
+              links={[
+                "Copy link",
+                "Edit list info",
+                "Remove items",
+                "Make list public",
+                "Reorder items",
+                "Hide responses",
+              ]}
+              isActive={isSmallDialogActive}
+            />
           </button>
         </div>
       </div>

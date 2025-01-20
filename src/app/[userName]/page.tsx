@@ -1,9 +1,12 @@
+"use client";
 import { Ellipsis } from "lucide-react";
 import TabNavigation from "@/app/(components)/TabNavigation";
 import ReadingList from "@/app/(components)/ReadingListCard";
 import Image from "next/image";
 import FooterSidebar from "@/app/(components)/Footer-sidebar";
 import Link from "next/link";
+import SmallDialog from "@/app/(components)/SmallDialog";
+import { useEffect, useState } from "react";
 
 interface ParamsInputView {
   userName: string;
@@ -18,8 +21,19 @@ export interface UserDataModel {
 
 type ParamsInputPromise = { params: Promise<ParamsInputView> };
 
-async function Page({ params }: ParamsInputPromise) {
-  const { userName } = await params;
+function Page({ params }: ParamsInputPromise) {
+  const [userName, setUserName] = useState<string>("");
+  const [isProfileSmallDialogActive, setIsProfileSmallDialogActive] =
+    useState(false);
+
+  useEffect(() => {
+    // Resolve the async `params` and set the state
+    async function resolveParams() {
+      const resolvedParams = await params;
+      setUserName(resolvedParams.userName);
+    }
+    resolveParams().then();
+  }, [params]);
 
   const userData: UserDataModel = {
     userName: "Mohammad Aghaei",
@@ -33,8 +47,16 @@ async function Page({ params }: ParamsInputPromise) {
       <div className="flex flex-col gap-10 w-2/3 border-r pt-12 pr-20 h-screen">
         <div className="flex justify-between">
           <h1 className="text-4xl font-bold">{userData.userName}</h1>
-          <button>
+          <button
+            onClick={() => {
+              setIsProfileSmallDialogActive((prev) => !prev);
+            }}
+          >
             <Ellipsis size={20} className="text-gray-500 hover:text-gray-950" />
+            <SmallDialog
+              links={["Copy link to profile", "Design your profile"]}
+              isActive={isProfileSmallDialogActive}
+            />
           </button>
         </div>
         <TabNavigation linkNames={["Home", "About"]} pageLink={userName} />
