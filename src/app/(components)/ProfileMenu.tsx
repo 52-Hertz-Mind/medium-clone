@@ -10,7 +10,7 @@ import {
 import Link from "next/link";
 
 export default function ProfileMenu() {
-  const userName = "mohammad";
+  const userName = "@mohammad";
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

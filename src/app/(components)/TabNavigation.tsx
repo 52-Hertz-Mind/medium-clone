@@ -5,10 +5,15 @@ import { Plus } from "lucide-react";
 
 interface TabNavigationProps {
   linkNames: string[]; // Array of tab names
+  pageLink?: string;
   isPlusNeeded?: boolean;
 }
 
-function TabNavigation({ linkNames, isPlusNeeded }: TabNavigationProps) {
+function TabNavigation({
+  linkNames,
+  isPlusNeeded,
+  pageLink,
+}: TabNavigationProps) {
   //region states
   //end region
 
@@ -30,7 +35,7 @@ function TabNavigation({ linkNames, isPlusNeeded }: TabNavigationProps) {
       const params = new URLSearchParams(searchParams.toString());
       params.set("topic", topic);
 
-      router.push(`/?${params.toString()}`);
+      router.push(`${[pageLink]}/?${params.toString()}`);
     }
   }
   //end region
