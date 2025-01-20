@@ -14,7 +14,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Tooltip from "@/app/(components)/Tooltip";
 import { useState } from "react";
-import { Timeout } from "@mui/utils/useTimeout";
+
 export interface BlogCardDataModel {
   userName: string;
   userImageUrl: string;
@@ -39,7 +39,7 @@ function BlogCard({ data }: BlogCardProps) {
   const [isShowlessToolTipActive, setisShowlessToolTipActive] = useState(false);
   const [isSaveToolTipActive, setisSaveToolTipActive] = useState(false);
   const [isMoreToolTipActive, setisMoreToolTipActive] = useState(false);
-  let toolTipActivationTimeout: any;
+  let toolTipActivationTimeout: NodeJS.Timeout;
   //end region
 
   //region functions
