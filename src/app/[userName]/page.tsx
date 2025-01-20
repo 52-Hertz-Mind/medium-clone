@@ -3,6 +3,7 @@ import TabNavigation from "@/app/(components)/TabNavigation";
 import ReadingList from "@/app/(components)/ReadingListCard";
 import Image from "next/image";
 import FooterSidebar from "@/app/(components)/Footer-sidebar";
+import Link from "next/link";
 
 interface ParamsInputView {
   userName: string;
@@ -45,8 +46,8 @@ async function Page({ params }: ParamsInputPromise) {
         />
       </div>
       {/*sidebar*/}
-      <div className="flex flex-col justify-between pt-12">
-        <div>
+      <div className="flex flex-col justify-between pt-12 pb-5">
+        <div className="flex flex-col gap-3">
           <Image
             alt={"profileimage"}
             src={userData.profileImageUrl}
@@ -54,8 +55,20 @@ async function Page({ params }: ParamsInputPromise) {
             height={32}
             className="rounded-full"
           />
+          <p className="font-bold text-sm">{userData.userName}</p>
+          <Link href="" className="text-sm text-gray-500 hover:text-gray-900">
+            {userData.followerCount} Follower
+          </Link>
+          <Link
+            href=""
+            className="text-xs mt-5 text-[#1a8917] hover:text-gray-900"
+          >
+            Edit Profile
+          </Link>
         </div>
-        <FooterSidebar />
+        <div className="fixed bottom-5">
+          <FooterSidebar />
+        </div>
       </div>
     </div>
   );
