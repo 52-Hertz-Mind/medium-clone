@@ -56,6 +56,7 @@ function Page({ params }: ParamsInputPromise) {
             <SmallDialog
               links={["Copy link to profile", "Design your profile"]}
               isActive={isProfileSmallDialogActive}
+              onClose={() => setIsProfileSmallDialogActive(false)}
             />
           </button>
         </div>

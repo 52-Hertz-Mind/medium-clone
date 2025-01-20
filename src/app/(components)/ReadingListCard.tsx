@@ -60,6 +60,7 @@ export default function ReadingListCard({
                 "Hide responses",
               ]}
               isActive={isSmallDialogActive}
+              onClose={() => setIsSmallDialgActive(false)}
             />
           </button>
         </div>

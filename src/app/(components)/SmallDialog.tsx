@@ -1,15 +1,39 @@
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 
 interface SmallDialogProps {
   links: string[];
   isActive: boolean;
+  onClose: () => void;
 }
 
-function SmallDialog({ links, isActive }: SmallDialogProps) {
+function SmallDialog({ links, isActive, onClose }: SmallDialogProps) {
+  const dialogRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!isActive) return;
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dialogRef.current &&
+        !dialogRef.current.contains(event.target as Node)
+      ) {
+        onClose(); // Close the dialog when clicking outside
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isActive, onClose]);
+
   if (!isActive) return null;
+
   return (
     <div
-      className="items-start z-50 w-fit -translate-x-[43%] translate-y-5  h-fit flex flex-col
+      ref={dialogRef}
+      className="items-start z-50 w-fit -translate-x-[43%] translate-y-5 h-fit flex flex-col
        drop-shadow-[0_10px_35px_rgba(0,0,0,0.15)] rounded absolute p-5 bg-white text-gray-500
      text-sm gap-5"
     >
@@ -25,4 +49,5 @@ function SmallDialog({ links, isActive }: SmallDialogProps) {
     </div>
   );
 }
+
 export default SmallDialog;
