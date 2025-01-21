@@ -5,6 +5,7 @@ import {
 } from "@/components/ui/hover-card";
 import { Button } from "@/components/ui/button";
 
+//region data models
 export interface MiniCardDataModel {
   userName: string;
   userImage: string;
@@ -15,8 +16,9 @@ export interface MiniCardDataModel {
 interface MiniCardData {
   data: MiniCardDataModel;
 }
-
+//endregion
 export default function MiniCard({ data }: MiniCardData) {
+  //region template
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-center gap-2 ">
@@ -56,4 +58,5 @@ export default function MiniCard({ data }: MiniCardData) {
       <h3 className=" text-xs text-gray-600">Jan 3</h3>
     </div>
   );
+  //endregion
 }
