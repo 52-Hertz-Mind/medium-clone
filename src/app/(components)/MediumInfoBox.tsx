@@ -4,7 +4,7 @@ import { X } from "lucide-react";
 import { useState } from "react";
 
 export default function MediumInfoBox() {
-  //region states
+  //region hooks
   const [isVisible, setIsVisible] = useState(true);
   //endregion
   if (!isVisible) return null;

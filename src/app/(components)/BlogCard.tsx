@@ -31,7 +31,7 @@ interface BlogCardProps {
 }
 
 function BlogCard({ data }: BlogCardProps) {
-  //region states
+  //region hooks
   const [isClapsToolTipActive, setisClapsToolTipActive] = useState(false);
   const [isResponsesToolTipActive, setisResponsesToolTipActive] =
     useState(false);

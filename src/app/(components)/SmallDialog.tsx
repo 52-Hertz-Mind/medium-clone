@@ -8,8 +8,10 @@ interface SmallDialogProps {
 }
 
 function SmallDialog({ links, isActive, onClose }: SmallDialogProps) {
+  //region hooks
   const dialogRef = useRef<HTMLDivElement | null>(null);
 
+  // for handling closing dialog when click outside of it
   useEffect(() => {
     if (!isActive) return;
 
@@ -27,9 +29,10 @@ function SmallDialog({ links, isActive, onClose }: SmallDialogProps) {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isActive, onClose]);
+  //endregion
 
   if (!isActive) return null;
-
+  //region template
   return (
     <div
       ref={dialogRef}
@@ -48,6 +51,7 @@ function SmallDialog({ links, isActive, onClose }: SmallDialogProps) {
       ))}
     </div>
   );
+  //endregion
 }
 
 export default SmallDialog;
