@@ -54,13 +54,10 @@ function MainSidebar() {
         </button>
       </div>
 
-      {/* Writing on Medium */}
       <MediumInfoBox />
 
-      {/* Recommended Topics */}
       <RecommendedTopicsSidebar recommendedTopics={recommendedTopics} />
 
-      {/* Who to Follow */}
       <WhoToFollow />
 
       {/* Recently Saved */}
@@ -77,7 +74,6 @@ function MainSidebar() {
         </a>
       </div>
 
-      {/* Footer */}
       <FooterSidebar />
     </div>
   );
