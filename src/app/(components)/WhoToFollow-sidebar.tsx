@@ -1,35 +1,20 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
+//region data models
 interface Suggestion {
   id: string;
   name: string;
   description: string;
   image: string;
 }
+//endregion
 
-const suggestions: Suggestion[] = [
-  {
-    id: "1",
-    name: "Crafting-Code",
-    description: "Elevate your skills with every read.",
-    image: "/profilepic.jpg",
-  },
-  {
-    id: "2",
-    name: "The Startup",
-    description: "Publication",
-    image: "/profilepic.jpg",
-  },
-  {
-    id: "3",
-    name: "Hayk Simonyan",
-    description: "I help software engineers land their dream tech jobs and...",
-    image: "/profilepic.jpg",
-  },
-];
-
-export default function WhoToFollow() {
+export default function WhoToFollow({
+  followSuggestions,
+}: {
+  followSuggestions: Suggestion[];
+}) {
   return (
     <div className="w-72">
       <h2 className="text-base font-semibold text-neutral-900 mb-4">
@@ -37,7 +22,7 @@ export default function WhoToFollow() {
       </h2>
 
       <div className="space-y-4 mb-4">
-        {suggestions.map((suggestion) => (
+        {followSuggestions.map((suggestion: Suggestion) => (
           <div
             key={suggestion.id}
             className="flex items-center justify-between gap-3"

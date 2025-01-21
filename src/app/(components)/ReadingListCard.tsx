@@ -3,12 +3,14 @@ import { MoreHorizontal, Lock } from "lucide-react";
 import SmallDialog from "@/app/(components)/SmallDialog";
 import { useState } from "react";
 
+//region data models
 interface ReadingListCardProps {
   name?: string;
   storiesCount?: number;
   profileImage?: string;
   thumbnailImage?: string;
 }
+///endregion
 
 export default function ReadingListCard({
   name = "Mohamad Aghaei",
@@ -16,8 +18,11 @@ export default function ReadingListCard({
   profileImage = "/placeholder.svg",
   thumbnailImage = "/placeholder.svg",
 }: ReadingListCardProps) {
+  //region states
   const [isSmallDialogActive, setIsSmallDialgActive] = useState(false);
+  //endregion
 
+  //region template
   return (
     <div className="w-full flex items-center justify-between  bg-neutral-50 rounded cursor-pointer border border-gray-100">
       {/* Left Section */}
@@ -80,4 +85,5 @@ export default function ReadingListCard({
       </div>
     </div>
   );
+  //endregion
 }

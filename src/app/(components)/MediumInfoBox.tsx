@@ -4,10 +4,11 @@ import { X } from "lucide-react";
 import { useState } from "react";
 
 export default function MediumInfoBox() {
+  //region hooks
   const [isVisible, setIsVisible] = useState(true);
-
+  //endregion
   if (!isVisible) return null;
-
+  //region template
   return (
     <div className="relative w-[280px] bg-[#c4e2ff] rounded-md p-5">
       {/* Close button */}
@@ -52,4 +53,5 @@ export default function MediumInfoBox() {
       </div>
     </div>
   );
+  //endregion
 }

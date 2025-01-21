@@ -11,6 +11,7 @@ import Link from "next/link";
 
 export default function ProfileMenu() {
   const userName = "mohammad";
+  //region template
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -96,4 +97,5 @@ export default function ProfileMenu() {
       </DropdownMenuContent>
     </DropdownMenu>
   );
+  //endregion
 }

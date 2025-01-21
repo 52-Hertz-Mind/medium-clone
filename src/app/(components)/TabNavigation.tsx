@@ -18,8 +18,6 @@ function TabNavigation({
   const pathname = usePathname();
 
   const isProfilePage = pathname.startsWith("/@");
-
-  // Clean up the username by removing any @ symbols
   const cleanUsername = pageLink?.replace(/%40/, "");
 
   const activeTab = isProfilePage
@@ -32,14 +30,12 @@ function TabNavigation({
     const tabLower = tabName.toLowerCase();
 
     if (isProfilePage) {
-      // Profile page navigation logic
       if (tabLower === "home") {
         router.push(`/@${cleanUsername}`);
       } else if (tabLower === "about") {
         router.push(`/@${cleanUsername}/about`);
       }
     } else {
-      // Homepage navigation logic
       if (tabLower === "for you") {
         router.replace("/");
       } else {
@@ -49,7 +45,7 @@ function TabNavigation({
   }
 
   return (
-    <div className="flex border-b bg-white border-gray-100 justify-start w-11/12 pt-3 sticky top-0 z-30">
+    <div className="w-11/12 mx-auto flex border-b bg-white border-gray-100 justify-start pt-3 sticky top-0 z-30">
       {isPlusNeeded && (
         <Plus
           className="mr-5 text-gray-500 rounded-full hover:bg-gray-100 cursor-pointer"
@@ -59,7 +55,6 @@ function TabNavigation({
 
       {linkNames.map((linkName) => {
         const isActive = activeTab === linkName.toLowerCase();
-
         return (
           <button
             key={linkName}

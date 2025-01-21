@@ -1,11 +1,14 @@
+//region data models
 interface TooltipDataModel {
   amount?: number;
   dataName?: string;
   isToolTipActive: boolean;
 }
+//endregion
 
 function Tooltip({ amount, dataName, isToolTipActive }: TooltipDataModel) {
   if (!isToolTipActive) return null;
+  //region template
   return (
     <div
       className="absolute bottom-[100%] left-1/2 -translate-x-1/2 mb-2 py-1 px-2
@@ -26,6 +29,7 @@ function Tooltip({ amount, dataName, isToolTipActive }: TooltipDataModel) {
       ></div>
     </div>
   );
+  //endregion
 }
 
 export default Tooltip;

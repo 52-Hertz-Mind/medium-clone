@@ -31,8 +31,7 @@ interface BlogCardProps {
 }
 
 function BlogCard({ data }: BlogCardProps) {
-  //region states
-
+  //region hooks
   const [isClapsToolTipActive, setisClapsToolTipActive] = useState(false);
   const [isResponsesToolTipActive, setisResponsesToolTipActive] =
     useState(false);
@@ -40,7 +39,7 @@ function BlogCard({ data }: BlogCardProps) {
   const [isSaveToolTipActive, setisSaveToolTipActive] = useState(false);
   const [isMoreToolTipActive, setisMoreToolTipActive] = useState(false);
   let toolTipActivationTimeout: NodeJS.Timeout;
-  //end region
+  //endregion
 
   //region functions
   function handleMouseEnter(toolTipName: string) {
@@ -72,7 +71,9 @@ function BlogCard({ data }: BlogCardProps) {
     setisSaveToolTipActive(false);
     setisMoreToolTipActive(false);
   }
-  //end region
+  //endregion
+
+  //region template
   return (
     <div className="flex gap-8 items-center border-b border-b-gray-100 p-5 mx-10 cursor-pointer">
       <div className="flex flex-col gap-3">
@@ -204,6 +205,7 @@ function BlogCard({ data }: BlogCardProps) {
       <img src={data.blogImageUrl} className="w-40" alt="blog image" />
     </div>
   );
+  //endregion
 }
 
 export default BlogCard;
