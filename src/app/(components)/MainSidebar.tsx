@@ -4,8 +4,10 @@ import MiniCard, {
   MiniCardDataModel,
 } from "@/app/(components)/MiniCard-sidebar";
 import FooterSidebar from "@/app/(components)/Footer-sidebar";
+import RecommendedTopicsSidebar from "@/app/(components)/RecommendedTopicsSidebar";
 
 function MainSidebar() {
+  //region data
   const recommendedTopics: string[] = [
     "Data Science",
     "Self Improvement",
@@ -36,6 +38,9 @@ function MainSidebar() {
       followersCount: "30k",
     },
   ];
+  //endregion
+
+  //region template
   return (
     <div className="flex flex-col py-8 gap-10 sticky top-5 h-fit">
       {/* Staff Picks */}
@@ -53,27 +58,7 @@ function MainSidebar() {
       <MediumInfoBox />
 
       {/* Recommended Topics */}
-      <div className="w-72">
-        <h2 className="text-base font-semibold text-neutral-900 mb-4">
-          Recommended topics
-        </h2>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {recommendedTopics.map((topic) => (
-            <button
-              key={topic}
-              className="px-4 py-2 bg-neutral-100 rounded-full text-sm text-neutral-600 hover:text-neutral-900 transition-colors"
-            >
-              {topic}
-            </button>
-          ))}
-        </div>
-        <a
-          href="#"
-          className="text-sm hover:underline text-neutral-500 hover:text-neutral-900"
-        >
-          See more topics
-        </a>
-      </div>
+      <RecommendedTopicsSidebar recommendedTopics={recommendedTopics} />
 
       {/* Who to Follow */}
       <WhoToFollow />
@@ -96,6 +81,7 @@ function MainSidebar() {
       <FooterSidebar />
     </div>
   );
+  //endregion
 }
 
 export default MainSidebar;
