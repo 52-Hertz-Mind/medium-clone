@@ -1,3 +1,4 @@
+"use client";
 import { User, Bookmark, FileText, BarChart2, Plus } from "lucide-react";
 import {
   DropdownMenu,
@@ -8,9 +9,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
+import { useAuthStore } from "@/lib/mockAuth";
 
 export default function ProfileMenu() {
   const userName = "mohammad";
+
+  const { logout } = useAuthStore();
   //region template
   return (
     <DropdownMenu>
@@ -87,7 +91,10 @@ export default function ProfileMenu() {
         <DropdownMenuSeparator className="my-1" />
 
         <div className="flex flex-col">
-          <DropdownMenuItem className="py-3 cursor-pointer !bg-transparent">
+          <DropdownMenuItem
+            onClick={logout}
+            className="py-3 cursor-pointer !bg-transparent"
+          >
             Sign out
           </DropdownMenuItem>
           <DropdownMenuLabel className="py-3 font-normal text-sm text-neutral-500 !bg-transparent">
