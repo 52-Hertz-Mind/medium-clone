@@ -42,28 +42,72 @@ export default function Home() {
             <Link href="/" className="text-sm">
               Write
             </Link>
-            <Link href="/" className="text-sm">
+            <Link onClick={login} href="/" className="text-sm">
               Sign in
             </Link>
-            <button className="bg-gray-950 rounded-2xl w-24 h-9 p-2">
+            <button
+              onClick={login}
+              className="bg-gray-950 rounded-2xl w-24 h-9 p-2"
+            >
               <p className="text-white text-xs">Get started</p>
             </button>
           </div>
         </header>
-        <main className="border-t border-b border-gray-950 w-full h-5/6">
-          <div className="flex flex-col">
-            <h1 className="text-8xl font-taviraj">
-              Human <br />
-              stories & ideas
+        <main className="flex justify-between items-center pt-20 border-t  border-gray-950 w-full h-5/6">
+          <div className="flex flex-col gap-10 pl-[350px]">
+            <h1 className="text-9xl font-taviraj font-medium flex flex-col leading-[100px]">
+              <span>Human</span>
+              <span className="tracking-tighter">stories & ideas</span>
             </h1>
+            <p className="text-xl">
+              A place to read, write, and deepen your understanding
+            </p>
+            <button
+              onClick={login}
+              className="bg-gray-950 rounded-3xl w-48 h-12 p-2"
+            >
+              <p className="text-white text-lg">Start reading</p>
+            </button>
           </div>
           <Image
             src={"/landingImage.png"}
             alt={"landing image"}
-            width={380}
-            height={380}
+            width={465}
+            height={465}
           ></Image>
         </main>
+        <footer className="flex items-center pl-[615px] pt-1 h-[70px] text-[13px] border-t border-gray-950  gap-2 ">
+          <div className="mr-1">
+            <a className="cursor-pointer text-gray-600 ">Help</a>
+          </div>
+          <div className="mr-1">
+            <a className="cursor-pointer text-gray-600 ">Status</a>
+          </div>
+          <div className="mr-1">
+            <a className="cursor-pointer text-gray-600 ">About</a>
+          </div>
+          <div className="mr-1">
+            <a className="cursor-pointer text-gray-600 ">Careers</a>
+          </div>
+          <div className="mr-1">
+            <a className="cursor-pointer text-gray-600 ">Press</a>
+          </div>
+          <div className="mr-1">
+            <a className="cursor-pointer text-gray-600 ">Blog</a>
+          </div>
+          <div className="mr-1">
+            <a className="cursor-pointer text-gray-600 ">Privacy</a>
+          </div>
+          <div className="mr-1">
+            <a className="cursor-pointer text-gray-600 ">Terms</a>
+          </div>
+          <div className="mr-1">
+            <a className="cursor-pointer text-gray-600 ">Text to speech</a>
+          </div>
+          <div className="mr-1">
+            <a className="cursor-pointer text-gray-600 ">Teams</a>
+          </div>
+        </footer>
         {/*<button onClick={login}>log in</button>*/}
       </div>
     );

@@ -5,7 +5,7 @@ import Header from "@/app/(components)/Header";
 
 const taviraj = Taviraj({
   subsets: ["latin"],
-  weight: ["800", "400"],
+  weight: ["800", "600", "400"],
   variable: "--font-taviraj", // Define CSS variable
 });
 
