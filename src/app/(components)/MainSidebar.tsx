@@ -5,7 +5,14 @@ import MiniCard, {
 } from "@/app/(components)/MiniCard-sidebar";
 import FooterSidebar from "@/app/(components)/Footer-sidebar";
 import RecommendedTopicsSidebar from "@/app/(components)/RecommendedTopicsSidebar";
-
+//region data models
+interface Suggestion {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+}
+//endregion
 function MainSidebar() {
   //region data
   const recommendedTopics: string[] = [
@@ -38,6 +45,27 @@ function MainSidebar() {
       followersCount: "30k",
     },
   ];
+  const followSuggestions: Suggestion[] = [
+    {
+      id: "1",
+      name: "Crafting-Code",
+      description: "Elevate your skills with every read.",
+      image: "/profilepic.jpg",
+    },
+    {
+      id: "2",
+      name: "The Startup",
+      description: "Publication",
+      image: "/profilepic.jpg",
+    },
+    {
+      id: "3",
+      name: "Hayk Simonyan",
+      description:
+        "I help software engineers land their dream tech jobs and...",
+      image: "/profilepic.jpg",
+    },
+  ];
   //endregion
 
   //region template
@@ -58,7 +86,7 @@ function MainSidebar() {
 
       <RecommendedTopicsSidebar recommendedTopics={recommendedTopics} />
 
-      <WhoToFollow />
+      <WhoToFollow followSuggestions={followSuggestions} />
 
       {/* Recently Saved */}
       <div className="flex flex-col gap-3">
