@@ -13,12 +13,13 @@ function TabNavigation({
   isPlusNeeded,
   pageLink,
 }: TabNavigationProps) {
+  //region hooks
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
+  //endregin
 
   const isProfilePage = pathname.startsWith("/@");
-
   // Clean up the username by removing any @ symbols
   const cleanUsername = pageLink?.replace(/%40/, "");
 
@@ -28,6 +29,7 @@ function TabNavigation({
       : "home"
     : searchParams.get("topic") || linkNames[0].toLowerCase();
 
+  //region functions
   function handleTabClick(tabName: string) {
     const tabLower = tabName.toLowerCase();
 
@@ -47,7 +49,9 @@ function TabNavigation({
       }
     }
   }
+  //endregion
 
+  //region template
   return (
     <div className="flex border-b bg-white border-gray-100 justify-start w-11/12 pt-3 sticky top-0 z-30">
       {isPlusNeeded && (
@@ -59,7 +63,6 @@ function TabNavigation({
 
       {linkNames.map((linkName) => {
         const isActive = activeTab === linkName.toLowerCase();
-
         return (
           <button
             key={linkName}
@@ -74,6 +77,7 @@ function TabNavigation({
       })}
     </div>
   );
+  //endregion
 }
 
 export default TabNavigation;
