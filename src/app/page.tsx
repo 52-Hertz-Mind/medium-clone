@@ -4,6 +4,7 @@ import BlogCard, { BlogCardDataModel } from "@/app/(components)/BlogCard";
 import MainSidebar from "@/app/(components)/MainSidebar";
 import { Suspense } from "react";
 import { useAuthStore } from "@/lib/mockAuth";
+import Link from "next/link";
 
 export default function Home() {
   const data: BlogCardDataModel = {
@@ -19,14 +20,20 @@ export default function Home() {
   };
 
   const { isUserLoggedIn, login } = useAuthStore();
+  //Landing page
   if (!isUserLoggedIn) {
     return (
-      <div>
-        landing
+      <div className="bg-[#f7f4ed] h-screen">
+        <header>
+          <Link href="/" className="text-3xl text-gray-950 font-taviraj">
+            Medium
+          </Link>
+        </header>
         <button onClick={login}>log in</button>
       </div>
     );
   }
+  //logged in page
   if (isUserLoggedIn) {
     return (
       <Suspense>

@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Taviraj } from "next/font/google";
-import { Inter } from "next/font/google";
-
+import { Taviraj, Inter } from "next/font/google";
 import Header from "@/app/(components)/Header";
 
 const taviraj = Taviraj({
   subsets: ["latin"],
   weight: "800",
+  variable: "--font-taviraj", // Define CSS variable
 });
+
 const inter = Inter({
   subsets: ["latin"],
   weight: "400",
+  variable: "--font-inter", // Define CSS variable
 });
 
 export const metadata: Metadata = {
@@ -25,9 +26,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} antialiased`}>
-        <Header font={taviraj.className} />
+    <html lang="en" className={`${taviraj.variable} ${inter.variable}`}>
+      <body className="font-inter antialiased">
+        <Header />
         {children}
       </body>
     </html>
