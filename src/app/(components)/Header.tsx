@@ -1,11 +1,13 @@
 "use client";
 import { Bell, PenSquare } from "lucide-react";
-
 import ProfileButton from "@/app/(components)/ProfileMenu";
 import Link from "next/link";
 import SearchInput from "@/app/(components)/SearchInput";
+import { useAuthStore } from "@/lib/mockAuth";
 
 function Header({ font }: { font: string }) {
+  const { isUserLoggedIn } = useAuthStore();
+  if (!isUserLoggedIn) return null;
   return (
     <header className="flex justify-between px-5 py-2 border-b bg-white border-gray-100">
       <div className="flex gap-5">

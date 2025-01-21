@@ -1,7 +1,9 @@
+"use client";
 import TabNavigation from "@/app/(components)/TabNavigation";
 import BlogCard, { BlogCardDataModel } from "@/app/(components)/BlogCard";
 import MainSidebar from "@/app/(components)/MainSidebar";
 import { Suspense } from "react";
+import { useAuthStore } from "@/lib/mockAuth";
 
 export default function Home() {
   const data: BlogCardDataModel = {
@@ -15,27 +17,39 @@ export default function Home() {
     commentsCount: 31,
     blogImageUrl: "/blogImage.png",
   };
-  return (
-    <Suspense>
-      <div className="justify-center flex gap-10 px-96">
-        <div className="flex flex-col items-start w-3/4 border-r h-full pt-10 gap-5">
-          <TabNavigation
-            linkNames={["For you", "Programming", "Web"]}
-            isPlusNeeded={true}
-          />
-          <BlogCard data={data} />
-          <BlogCard data={data} />
-          <BlogCard data={data} />
-          <BlogCard data={data} />
-          <BlogCard data={data} />
-          <BlogCard data={data} />
-          <BlogCard data={data} />
-          <BlogCard data={data} />
-          <BlogCard data={data} />
-          <BlogCard data={data} />
-        </div>
-        <MainSidebar />
+
+  const { isUserLoggedIn, login } = useAuthStore();
+  if (!isUserLoggedIn) {
+    return (
+      <div>
+        landing
+        <button onClick={login}>log in</button>
       </div>
-    </Suspense>
-  );
+    );
+  }
+  if (isUserLoggedIn) {
+    return (
+      <Suspense>
+        <div className="justify-center flex gap-10 px-96">
+          <div className="flex flex-col items-start w-3/4 border-r h-full pt-10 gap-5">
+            <TabNavigation
+              linkNames={["For you", "Programming", "Web"]}
+              isPlusNeeded={true}
+            />
+            <BlogCard data={data} />
+            <BlogCard data={data} />
+            <BlogCard data={data} />
+            <BlogCard data={data} />
+            <BlogCard data={data} />
+            <BlogCard data={data} />
+            <BlogCard data={data} />
+            <BlogCard data={data} />
+            <BlogCard data={data} />
+            <BlogCard data={data} />
+          </div>
+          <MainSidebar />
+        </div>
+      </Suspense>
+    );
+  }
 }
