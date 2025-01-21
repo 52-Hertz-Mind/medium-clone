@@ -5,6 +5,7 @@ import MainSidebar from "@/app/(components)/MainSidebar";
 import { Suspense } from "react";
 import { useAuthStore } from "@/lib/mockAuth";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   const data: BlogCardDataModel = {
@@ -23,13 +24,47 @@ export default function Home() {
   //Landing page
   if (!isUserLoggedIn) {
     return (
-      <div className="bg-[#f7f4ed] h-screen">
-        <header>
-          <Link href="/" className="text-3xl text-gray-950 font-taviraj">
+      <div className="flex flex-col gap-5 bg-[#f7f4ed] w-screen h-screen ">
+        <header className="flex justify-between items-center px-[350px] pt-5">
+          <Link
+            href="/"
+            className="text-3xl text-gray-950 font-taviraj font-bold"
+          >
             Medium
           </Link>
+          <div className="flex gap-5 items-center">
+            <Link href="/" className="text-sm">
+              Our story
+            </Link>
+            <Link href="/" className="text-sm">
+              Membership
+            </Link>
+            <Link href="/" className="text-sm">
+              Write
+            </Link>
+            <Link href="/" className="text-sm">
+              Sign in
+            </Link>
+            <button className="bg-gray-950 rounded-2xl w-24 h-9 p-2">
+              <p className="text-white text-xs">Get started</p>
+            </button>
+          </div>
         </header>
-        <button onClick={login}>log in</button>
+        <main className="border-t border-b border-gray-950 w-full h-5/6">
+          <div className="flex flex-col">
+            <h1 className="text-8xl font-taviraj">
+              Human <br />
+              stories & ideas
+            </h1>
+          </div>
+          <Image
+            src={"/landingImage.png"}
+            alt={"landing image"}
+            width={380}
+            height={380}
+          ></Image>
+        </main>
+        {/*<button onClick={login}>log in</button>*/}
       </div>
     );
   }
