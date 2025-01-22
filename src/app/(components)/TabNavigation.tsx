@@ -21,16 +21,28 @@ function TabNavigation({
   const isLibrary = pathname.startsWith("/me");
   const cleanUsername = pageLink?.replace(/%40/, "");
 
+  // Determine the active tab
   const activeTab = isProfilePage
     ? pathname.endsWith("/about")
       ? "about"
       : "home"
-    : searchParams.get("topic") || linkNames[0].toLowerCase();
+    : isLibrary
+      ? pathname === "/me/lists"
+        ? "your lists"
+        : pathname === "/me/lists/saved"
+          ? "saved lists"
+          : pathname === "/me/lists/highlights"
+            ? "highlights"
+            : pathname === "/me/lists/reading-history"
+              ? "reading history"
+              : linkNames[0].toLowerCase() // Default to the first tab if no match is found
+      : searchParams.get("topic") || linkNames[0].toLowerCase();
 
   function handleTabClick(tabName: string) {
     const tabLower = tabName.toLowerCase();
 
     if (isLibrary) {
+      // Handle library page navigation
       if (tabLower === "your lists") {
         router.push("/me/lists");
       } else if (tabLower === "saved lists") {
@@ -40,16 +52,16 @@ function TabNavigation({
       } else if (tabLower === "reading history") {
         router.push("/me/lists/reading-history");
       }
-    }
-
-    if (isProfilePage) {
+    } else if (isProfilePage) {
+      // Changed to ELSE IF
+      // Handle profile page navigation
       if (tabLower === "home") {
         router.push(`/@${cleanUsername}`);
       } else if (tabLower === "about") {
         router.push(`/@${cleanUsername}/about`);
       }
-    }
-    if (!isLibrary) {
+    } else {
+      // Handle home page navigation
       if (tabLower === "for you") {
         router.replace("/");
       } else {
