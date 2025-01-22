@@ -18,6 +18,7 @@ function TabNavigation({
   const pathname = usePathname();
 
   const isProfilePage = pathname.startsWith("/@");
+  const isLibrary = pathname.startsWith("/me");
   const cleanUsername = pageLink?.replace(/%40/, "");
 
   const activeTab = isProfilePage
@@ -29,13 +30,26 @@ function TabNavigation({
   function handleTabClick(tabName: string) {
     const tabLower = tabName.toLowerCase();
 
+    if (isLibrary) {
+      if (tabLower === "your lists") {
+        router.push("/me/lists");
+      } else if (tabLower === "saved lists") {
+        router.push("/me/lists/saved");
+      } else if (tabLower === "highlights") {
+        router.push("/me/lists/highlights");
+      } else if (tabLower === "reading history") {
+        router.push("/me/lists/reading-history");
+      }
+    }
+
     if (isProfilePage) {
       if (tabLower === "home") {
         router.push(`/@${cleanUsername}`);
       } else if (tabLower === "about") {
         router.push(`/@${cleanUsername}/about`);
       }
-    } else {
+    }
+    if (!isLibrary) {
       if (tabLower === "for you") {
         router.replace("/");
       } else {
