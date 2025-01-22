@@ -4,7 +4,7 @@ import SmallDialog from "@/app/(components)/SmallDialog";
 import { useState } from "react";
 
 //region data models
-interface ReadingListCardProps {
+export interface ReadingListCardProps {
   name?: string;
   storiesCount?: number;
   profileImage?: string;

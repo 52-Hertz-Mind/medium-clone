@@ -71,7 +71,7 @@ function TabNavigation({
   }
 
   return (
-    <div className="w-11/12 mx-auto flex border-b bg-white border-gray-100 justify-start pt-3 sticky top-0 z-30">
+    <div className="w-11/12  flex border-b bg-white border-gray-100 justify-start pt-3 sticky top-0 z-30">
       {isPlusNeeded && (
         <Plus
           className="mr-5 text-gray-500 rounded-full hover:bg-gray-100 cursor-pointer"

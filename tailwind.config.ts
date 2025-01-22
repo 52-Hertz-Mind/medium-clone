@@ -14,6 +14,8 @@ export default {
         inter: ["var(--font-inter)"],
       },
       colors: {
+        redButton: "#c94a4a",
+        greenButton: "#1a8917",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
