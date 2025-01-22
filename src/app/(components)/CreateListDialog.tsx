@@ -41,8 +41,8 @@ export default function CreateListDialog({
           </DialogTitle>
         </DialogHeader>
 
-        <div className="flex flex-col gap-20">
-          <div className="space-y-4">
+        <div className="flex flex-col ">
+          <div className="space-y-4 flex flex-col gap-7">
             {/* Name Input */}
             <div className="relative">
               <input
@@ -56,33 +56,31 @@ export default function CreateListDialog({
                 {name.length}/60
               </span>
             </div>
+            {/*description input*/}
+            <div
+              className={`relative ${showDescription ? "opacity-100" : "opacity-0"}`}
+            >
+              <input
+                type="text"
+                placeholder="Description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value.slice(0, 280))}
+                className="w-full px-3 py-2 bg-[#F2F2F2] rounded-sm placeholder:text-neutral-500 focus:outline-none focus:ring-1 focus:ring-neutral-200 text-sm"
+              />
+              <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-neutral-600">
+                {description.length}/280
+              </span>
+            </div>
           </div>
           <div className="flex flex-col gap-5">
-            {/* Description */}
+            {/* Description button */}
             <div>
-              {!showDescription ? (
-                <button
-                  onClick={() => setShowDescription(true)}
-                  className={`text-[#1A8917] hover:text-[#156912] text-sm ${showDescription ? "opacity-0" : ""}`}
-                >
-                  Add a description
-                </button>
-              ) : (
-                <div className="relative">
-                  <input
-                    type="text"
-                    placeholder="Description"
-                    value={description}
-                    onChange={(e) =>
-                      setDescription(e.target.value.slice(0, 280))
-                    }
-                    className="w-full px-3 py-2 bg-[#F2F2F2] rounded-sm placeholder:text-neutral-500 focus:outline-none focus:ring-1 focus:ring-neutral-200 text-sm"
-                  />
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-neutral-600">
-                    {description.length}/280
-                  </span>
-                </div>
-              )}
+              <button
+                onClick={() => setShowDescription(true)}
+                className={`text-[#1A8917] hover:text-[#156912] text-sm ${!showDescription ? "opacity-100" : "opacity-0"}`}
+              >
+                Add a description
+              </button>
             </div>
             {/* Private Checkbox */}
             <div className="flex items-center space-x-2">
@@ -103,11 +101,11 @@ export default function CreateListDialog({
         </div>
 
         {/* Actions */}
-        <div className="flex h-10 items-center justify-center gap-2">
+        <div className="flex h-12 items-center justify-center gap-2 mt-12">
           <Button
             variant="outline"
             onClick={() => onOpenChange(false)}
-            className="rounded-full px-4 py-1.5 h-auto text-sm hover:bg-neutral-50 border-neutral-200"
+            className="rounded-full px-4 py-1.5 h-10 text-sm hover:bg-neutral-50 border-neutral-600"
           >
             Cancel
           </Button>
@@ -115,7 +113,7 @@ export default function CreateListDialog({
             onClick={() => {
               onOpenChange(false);
             }}
-            className="rounded-full px-4 py-1.5 h-auto text-sm bg-[#1A8917] hover:bg-[#156912] text-white"
+            className="rounded-full px-4 py-1.5 h-10 text-sm bg-[#1A8917] hover:bg-[#156912] text-white"
           >
             Create
           </Button>
