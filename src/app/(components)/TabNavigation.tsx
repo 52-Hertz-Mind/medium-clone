@@ -18,24 +18,50 @@ function TabNavigation({
   const pathname = usePathname();
 
   const isProfilePage = pathname.startsWith("/@");
+  const isLibrary = pathname.startsWith("/me");
   const cleanUsername = pageLink?.replace(/%40/, "");
 
+  // Determine the active tab
   const activeTab = isProfilePage
     ? pathname.endsWith("/about")
       ? "about"
       : "home"
-    : searchParams.get("topic") || linkNames[0].toLowerCase();
+    : isLibrary
+      ? pathname === "/me/lists"
+        ? "your lists"
+        : pathname === "/me/lists/saved"
+          ? "saved lists"
+          : pathname === "/me/lists/highlights"
+            ? "highlights"
+            : pathname === "/me/lists/reading-history"
+              ? "reading history"
+              : linkNames[0].toLowerCase() // Default to the first tab if no match is found
+      : searchParams.get("topic") || linkNames[0].toLowerCase();
 
   function handleTabClick(tabName: string) {
     const tabLower = tabName.toLowerCase();
 
-    if (isProfilePage) {
+    if (isLibrary) {
+      // Handle library page navigation
+      if (tabLower === "your lists") {
+        router.push("/me/lists");
+      } else if (tabLower === "saved lists") {
+        router.push("/me/lists/saved");
+      } else if (tabLower === "highlights") {
+        router.push("/me/lists/highlights");
+      } else if (tabLower === "reading history") {
+        router.push("/me/lists/reading-history");
+      }
+    } else if (isProfilePage) {
+      // Changed to ELSE IF
+      // Handle profile page navigation
       if (tabLower === "home") {
         router.push(`/@${cleanUsername}`);
       } else if (tabLower === "about") {
         router.push(`/@${cleanUsername}/about`);
       }
     } else {
+      // Handle home page navigation
       if (tabLower === "for you") {
         router.replace("/");
       } else {
@@ -45,7 +71,7 @@ function TabNavigation({
   }
 
   return (
-    <div className="w-11/12 mx-auto flex border-b bg-white border-gray-100 justify-start pt-3 sticky top-0 z-30">
+    <div className="w-11/12  flex border-b bg-white border-gray-100 justify-start pt-3 sticky top-0 z-30">
       {isPlusNeeded && (
         <Plus
           className="mr-5 text-gray-500 rounded-full hover:bg-gray-100 cursor-pointer"

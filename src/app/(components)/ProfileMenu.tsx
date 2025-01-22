@@ -38,7 +38,7 @@ export default function ProfileMenu() {
           </DropdownMenuItem>
           <DropdownMenuItem className="flex gap-3 py-3 cursor-pointer !bg-transparent">
             <Bookmark className="stroke-[1px] !w-6 !h-6" />
-            <span>Library</span>
+            <Link href="/me/lists">Library</Link>
           </DropdownMenuItem>
           <DropdownMenuItem className="flex gap-3 py-3 cursor-pointer !bg-transparent">
             <FileText className="stroke-[1px] !w-6 !h-6" />
