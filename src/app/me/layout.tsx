@@ -1,6 +1,5 @@
 "use client";
 import MainSidebar from "@/app/(components)/MainSidebar";
-import { Ellipsis } from "lucide-react";
 import TabNavigation from "@/app/(components)/TabNavigation";
 import { usePathname } from "next/navigation";
 import CreateListDialog from "@/app/(components)/CreateListDialog";
