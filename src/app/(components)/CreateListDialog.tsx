@@ -36,7 +36,6 @@ export default function CreateListDialog({
             onClick={() => onOpenChange(false)}
             className="absolute right-6 top-6 text-neutral-500 hover:text-neutral-900"
           >
-            <X className="h-6 w-6" />
             <span className="sr-only">Close</span>
           </button>
 
