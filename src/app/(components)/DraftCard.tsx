@@ -3,6 +3,7 @@ import { ChevronDown } from "lucide-react";
 import SmallDialog from "@/app/(components)/SmallDialog";
 import { useState } from "react";
 
+//region data models
 export interface DraftCardDataModel {
   title: string;
   description: string;
@@ -13,9 +14,13 @@ export interface DraftCardDataModel {
 interface DraftCardData {
   data: DraftCardDataModel;
 }
-
+//endregion
 function DraftCard({ data }: DraftCardData) {
+  //region hooks
   const [isSmallDialogActive, setIsSmallDialogActive] = useState(false);
+  //endregion
+
+  //region template
   return (
     <div className={"flex flex-col gap-1 border-b pb-6 pt-8"}>
       <h2 className={"font-bold text-sm"}>{data.title}</h2>
@@ -36,6 +41,7 @@ function DraftCard({ data }: DraftCardData) {
       </div>
     </div>
   );
+  //endregion
 }
 
 export default DraftCard;
