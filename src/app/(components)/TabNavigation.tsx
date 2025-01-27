@@ -27,33 +27,59 @@ function TabNavigation({
       ? "about"
       : "home"
     : isLibrary
-      ? pathname === "/me/lists"
-        ? "your lists"
-        : pathname === "/me/lists/saved"
-          ? "saved lists"
-          : pathname === "/me/lists/highlights"
-            ? "highlights"
-            : pathname === "/me/lists/reading-history"
-              ? "reading history"
-              : linkNames[0].toLowerCase() // Default to the first tab if no match is found
+      ? pathname === "/me/stories/drafts"
+        ? "drafts"
+        : pathname === "/me/stories/public"
+          ? "published"
+          : pathname === "/me/stories/responses"
+            ? "responses"
+            : pathname === "/me/lists"
+              ? "your lists"
+              : pathname === "/me/lists/saved"
+                ? "saved lists"
+                : pathname === "/me/lists/highlights"
+                  ? "highlights"
+                  : pathname === "/me/lists/reading-history"
+                    ? "reading history"
+                    : linkNames[0].toLowerCase()
       : searchParams.get("topic") || linkNames[0].toLowerCase();
 
   function handleTabClick(tabName: string) {
     const tabLower = tabName.toLowerCase();
 
     if (isLibrary) {
-      // Handle library page navigation
-      if (tabLower === "your lists") {
-        router.push("/me/lists");
-      } else if (tabLower === "saved lists") {
-        router.push("/me/lists/saved");
-      } else if (tabLower === "highlights") {
-        router.push("/me/lists/highlights");
-      } else if (tabLower === "reading history") {
-        router.push("/me/lists/reading-history");
+      // Handle stories navigation
+      if (pathname.startsWith("/me/stories")) {
+        switch (tabLower) {
+          case "drafts":
+            router.push("/me/stories/drafts");
+            break;
+          case "published":
+            router.push("/me/stories/public");
+            break;
+          case "responses":
+            router.push("/me/stories/responses");
+            break;
+        }
+      }
+      // Handle lists navigation
+      else {
+        switch (tabLower) {
+          case "your lists":
+            router.push("/me/lists");
+            break;
+          case "saved lists":
+            router.push("/me/lists/saved");
+            break;
+          case "highlights":
+            router.push("/me/lists/highlights");
+            break;
+          case "reading history":
+            router.push("/me/lists/reading-history");
+            break;
+        }
       }
     } else if (isProfilePage) {
-      // Changed to ELSE IF
       // Handle profile page navigation
       if (tabLower === "home") {
         router.push(`/@${cleanUsername}`);
@@ -71,7 +97,7 @@ function TabNavigation({
   }
 
   return (
-    <div className="w-11/12  flex border-b bg-white border-gray-100 justify-start pt-3 sticky top-0 z-30">
+    <div className="w-11/12 flex border-b bg-white border-gray-100 justify-start pt-3 sticky top-0 z-30">
       {isPlusNeeded && (
         <Plus
           className="mr-5 text-gray-500 rounded-full hover:bg-gray-100 cursor-pointer"

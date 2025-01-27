@@ -42,7 +42,7 @@ export default function ProfileMenu() {
           </DropdownMenuItem>
           <DropdownMenuItem className="flex gap-3 py-3 cursor-pointer !bg-transparent">
             <FileText className="stroke-[1px] !w-6 !h-6" />
-            <span>Stories</span>
+            <Link href="/me/stories/drafts">Stories</Link>
           </DropdownMenuItem>
           <DropdownMenuItem className="flex gap-3 py-3 cursor-pointer !bg-transparent">
             <BarChart2 className="stroke-[1px] !w-6 !h-6" />
