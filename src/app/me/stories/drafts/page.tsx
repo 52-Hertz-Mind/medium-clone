@@ -15,6 +15,7 @@ function Page() {
   return (
     <div className="flex flex-col">
       <DraftCard data={draftCardData} />
+      <DraftCard data={draftCardData} />
     </div>
   );
 }
