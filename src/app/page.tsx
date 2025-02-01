@@ -42,11 +42,23 @@ export default function Home() {
             <Link href="/" className="text-sm">
               Write
             </Link>
-            <Link onClick={login} href="/" className="text-sm">
+            <Link
+              onClick={() =>
+                login(
+                  "wpoegfhopeirw2178gjpoejgponsdfogmpeasno86765lifnswopgnoe",
+                )
+              }
+              href="/"
+              className="text-sm"
+            >
               Sign in
             </Link>
             <button
-              onClick={login}
+              onClick={() =>
+                login(
+                  "wpoegfhopeirw2178gjpoejgponsdfogmpeasno86765lifnswopgnoe",
+                )
+              }
               className="bg-gray-950 rounded-2xl w-24 h-9 p-2"
             >
               <p className="text-white text-xs">Get started</p>
@@ -63,7 +75,11 @@ export default function Home() {
               A place to read, write, and deepen your understanding
             </p>
             <button
-              onClick={login}
+              onClick={() =>
+                login(
+                  "wpoegfhopeirw2178gjpoejgponsdfogmpeasno86765lifnswopgnoe",
+                )
+              }
               className="bg-gray-950 rounded-3xl w-48 h-12 p-2"
             >
               <p className="text-white text-lg">Start reading</p>
