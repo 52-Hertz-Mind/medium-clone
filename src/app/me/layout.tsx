@@ -85,4 +85,28 @@ export default function MeLayout({
       </div>
     );
   }
+  if (pathname.startsWith("/me/setting")) {
+    return (
+      <div className="flex flex-col md:flex-row px-4 md:px-96 gap-10 h-screen">
+        <div className="flex flex-col gap-5 w-full md:w-2/3 border-r pt-12 pr-4 md:pr-20 h-screen">
+          <div className="flex justify-between items-center">
+            <h1 className="text-5xl font-semibold">Your stories</h1>
+
+            <CreateListDialog open={isDialogOpen} onOpenChange={onOpenDialog} />
+          </div>
+          <TabNavigation
+            linkNames={[
+              "Account",
+              "Publishing",
+              "Notifications",
+              "Membership and payment",
+              "Security and apps",
+            ]}
+          />
+
+          {children}
+        </div>
+      </div>
+    );
+  }
 }

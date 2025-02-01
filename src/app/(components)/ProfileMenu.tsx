@@ -54,7 +54,7 @@ export default function ProfileMenu() {
 
         <div className="flex flex-col">
           <DropdownMenuItem className="py-3 cursor-pointer !bg-transparent">
-            Settings
+            <Link href={"/me/settings"}>Settings</Link>
           </DropdownMenuItem>
           <DropdownMenuItem className="py-3 cursor-pointer !bg-transparent">
             Refine recommendations
